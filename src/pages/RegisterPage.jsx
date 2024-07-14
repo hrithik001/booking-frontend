@@ -43,7 +43,7 @@ const RegisterPage = () => {
             console.log('User validation data Successfull!!')
             console.log(`${name} , ${email}, ${password}`);
             try {
-                const response = await axios.post('/register', {
+                const response = await axios.post('/users/register', {
                     name:name,
                     email:email,
                     password:password
