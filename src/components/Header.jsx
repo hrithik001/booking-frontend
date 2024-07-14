@@ -8,7 +8,7 @@ const Header = () => {
   const {user} =useContext(UserContext);
     return (
          <header className="flex justify-between" >
-            <a href="" className="flex items-center gap-1">
+            <Link to={'/'} className="flex items-center gap-1">
               
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-10 -rotate-90">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
@@ -16,7 +16,7 @@ const Header = () => {
 
 
                 <span className='font-bold text-xl' >A&A</span>
-            </a>
+            </Link>
 
             <div className='flex border border-gray-300 rounded-full py-2 px-4 gap-2 shadow-md shadow-gray-300'>
               <div>Any where</div>
@@ -31,7 +31,7 @@ const Header = () => {
               </button>
             </div>
 
-            <Link to={'/login'} className="flex items-center border border-gray-300 rounded-full gap-2 py-3 px-3 ">
+            <Link to={user ? '/account' : '/login'} className="flex items-center border border-gray-300 rounded-full gap-2 py-3 px-3 ">
 
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />

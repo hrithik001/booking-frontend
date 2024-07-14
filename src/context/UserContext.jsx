@@ -7,9 +7,13 @@ export const UserContext = createContext({});
 export const UserContextProvider = ({children}) => {
 
     const [user,setUser] = useState(null);
+    const [load,setLoad] = useState(true);
     useEffect(() => {
         axios.get('/users/profile')
-        .then(({data}) => setUser(data))       
+        .then(({data}) => {
+            setUser(data)
+            setLoad(true);
+        })       
         
   }, [])
     
