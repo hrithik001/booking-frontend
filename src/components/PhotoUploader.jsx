@@ -9,7 +9,7 @@ const PhotoUploader = ({addedphotos,onChange}) => {
         e.preventDefault();
         console.log("adding ....",photolink);
        try{
-            const {data} = await axios.post('place/upload/by-link',{
+            const {data} = await axios.post('places/upload/by-link',{
                 link: photolink
             })
             console.log(data.name)
