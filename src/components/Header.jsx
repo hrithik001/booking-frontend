@@ -18,13 +18,13 @@ const Header = () => {
                 <span className='font-bold text-xl' >A&A</span>
             </Link>
 
-            <div className='flex border border-gray-300 rounded-full py-2 px-4 gap-2 shadow-md shadow-gray-300'>
-              <div>Any where</div>
+            <div className='flex  align-middle border border-gray-300 rounded-full py-2 px-4 gap-2 shadow-md shadow-gray-300  '>
+                <div className="font-medium p-2">Any where</div>
               <div className='border-l border-gray-400'></div>
-              <div>Any week</div>
+                 <div className="font-medium p-2">Any week</div>
               <div className='border-l border-gray-400'></div>
-              <div> Add guest</div>
-              <button className='bg-primary text-white p-1 rounded-full'>
+               <div className="font-medium p-2"> Add guest</div>
+              <button className='bg-primary text-white px-3 rounded-full'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                 </svg>
@@ -45,7 +45,7 @@ const Header = () => {
               </div>
                {
                   !!user && (
-                    <div>
+                    <div className="font-medium">
                       {user.name}
                     </div>
 
