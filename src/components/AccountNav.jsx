@@ -1,36 +1,18 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../context/UserContext";
-import {Link,Navigate,useParams} from 'react-router-dom'
-import axios from "axios";
-import PlacesPage from "./PlacesPage";
+import { Link, useLocation } from "react-router-dom";
 
-const AccountPage = () => {
+const AccountNav = () => {
 
-    const {user,load,setUser} = useContext(UserContext);
-    const [redirect,setRedirect] = useState(null);
-    
-    let {subpage} = useParams()
-    if(subpage === undefined)
-    {
-        subpage = "profile"
-    }
-      
-       console.log(subpage);
-
-    if(load)
-    {
-        return 'Loading......!!'
-    }
-
-    if(load && !user)
-    {
-        return <Navigate to={'/login'}/>
-    }
-
+    const {pathname} = useLocation();
+    // console.log(location,"here")
+    let lasInd = pathname.lastIndexOf('/');
+    console.log(pathname,lasInd)
+    let subPage = pathname.slice(lasInd+1,pathname.length)
+    console.log(subPage)
+ 
     const linkClasses = (type=null) => {
         let classess = "py-3 px-6 inline-flex";
 
-        if(type === subpage )
+        if(type === subPage )
         {
             classess += ' bg-primary text-white rounded-full'
         }
@@ -40,24 +22,14 @@ const AccountPage = () => {
         return classess;
     }
 
-    const logOut = async () => {
-        const res = await axios.post('users/logout')
-        console.log(res);
-        setRedirect('/');
-        setUser(null);
-
-    }
-
-    if(redirect)
+    if(subPage === undefined)
     {
-        return <Navigate to={redirect} />
+        subPage = 'profile'
     }
-   
 
     return (
-        <>
         <nav className="w-full flex justify-center mt-8 gap-4">
-            <Link className={linkClasses('profile')} to={'/account/profile'}>
+            <Link className={linkClasses('profile')} to={'/account'}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
   <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
 </svg>
@@ -79,19 +51,8 @@ const AccountPage = () => {
                 My Accomodations</Link>
          
         </nav>
-        {
-            subpage === 'profile' && (
-                <div className="text-center max-w-lg mx-auto">
-                    Logged in as {user.name} ({user.email}) <br />
-                    <button onClick={logOut} className="primary max-w-sm mt-2">Log Out</button>
-                </div>
-            )
-        }
-        {
-            subpage === 'places' && <PlacesPage/>
-        }
-        </>
-    )
+    );
+
 }
 
-export default AccountPage;
+export default AccountNav;
