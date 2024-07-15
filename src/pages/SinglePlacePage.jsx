@@ -102,7 +102,7 @@ const SinglePlacePage = () => {
 
                 </div>
                 <div className="bg-white shadow p-4 rounded-2xl  ">
-                   <BookingTab price={place.price}/>
+                   <BookingTab place={place}/>
                 </div>
             </div>
             <div className="bg-white border py-3 px-4 rounded-2xl mt-3">
