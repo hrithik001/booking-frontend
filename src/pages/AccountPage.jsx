@@ -82,7 +82,7 @@ const AccountPage = () => {
         {
             subpage === 'profile' && (
                 <div className="text-center max-w-lg mx-auto">
-                    Logged in as {user.name} (user.email) <br />
+                    Logged in as {user.name} ({user.email}) <br />
                     <button onClick={logOut} className="primary max-w-sm mt-2">Log Out</button>
                 </div>
             )
