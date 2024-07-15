@@ -8,7 +8,7 @@ const PlacesPage = () => {
 
     const [places,setPlaces] = useState([]);
     useEffect( () => {
-        axios.get('/places').then(({data}) => {
+        axios.get('/users/places').then(({data}) => {
           setPlaces(data);
         })
     })  
@@ -42,7 +42,7 @@ const PlacesPage = () => {
                           {place.title}
                         </h2>
                           
-                        <p className="text-sm mt-2">{place.description   }{ console.log(place.photos?.length)}</p>
+                        <p className="text-sm mt-2">{place.description   }</p>
                     </div>
                   </Link>
                 ))
