@@ -1,9 +1,11 @@
-import { useState ,useEffect} from "react";
+import { useState ,useEffect, useContext} from "react";
 import {differenceInCalendarDays} from 'date-fns'
 import axios from 'axios'
 import {Navigate} from 'react-router-dom'
+import { UserContext } from "../context/UserContext";
 
 const BookingTab = ({place}) => {
+
 
 
 
@@ -14,7 +16,10 @@ const BookingTab = ({place}) => {
     const [address,setAddress] = useState('');
     const [phoneNumber,setPhoneNumber] = useState('');
     const [isDisabled,setIsDisabled] = useState(true);
-    const [isBookingSuccessfull,setIsBookingSuccessfull] = useState(false);
+    const [navigate,setNavigate] = useState(false);
+    const {user} = useContext(UserContext);
+
+
     let totalCost = 0;
 
     // console.log("current price",place._id)
@@ -30,12 +35,18 @@ const BookingTab = ({place}) => {
         totalCost = days * place.price * numberOfGuests;
     }
      useEffect(() => {
-            if (checkIn && checkOut && name && address && phoneNumber) {
+        
+            if (checkIn && checkOut  && address && phoneNumber) {
                  setIsDisabled(false);
             } else {
                 setIsDisabled(true);
             }
-        }, [checkIn, checkOut, name, address, phoneNumber]);
+
+            if(user){
+                setName(user.name);
+            }
+
+        }, [checkIn, checkOut, address, phoneNumber,user]);
 
 
     const validatePhoneNumber = (phoneNumber) => {
@@ -44,11 +55,7 @@ const BookingTab = ({place}) => {
     };
 
     const validateBookingDetails = () => {
-        
-        if (!name.trim()) {
-            return false; 
-        }
-
+       
         if (!validatePhoneNumber(phoneNumber)) {
             return false; 
         }
@@ -59,7 +66,7 @@ const BookingTab = ({place}) => {
     const BookPlace = async () => {
         if(!validateBookingDetails) return alert('Enter all data');
         try {
-            const {data} = await axios.post('places/book',
+            const response = await axios.post('places/book',
                             {
                             name: name,
                             bookingFrom: checkIn,
@@ -73,8 +80,9 @@ const BookingTab = ({place}) => {
                             
                         );
 
-              
-           setIsBookingSuccessfull(true);
+            const bookingId = response.data._id
+            console.log(bookingId);
+           setNavigate(`/account/bookings/${bookingId}`);
             
           
         } catch (error) {
@@ -86,10 +94,10 @@ const BookingTab = ({place}) => {
     }
 
 
-    if(isBookingSuccessfull)
+    if(navigate)
     {
-        alert("Booking successfull");
-        return <Navigate to={'/'} />
+        
+        return <Navigate to={navigate} />
     }
 
     return (

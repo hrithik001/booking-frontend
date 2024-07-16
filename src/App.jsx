@@ -11,6 +11,8 @@ import ProfilePage from './pages/ProfilePage.jsx'
 import PlacesPage from './pages/PlacesPage.jsx'
 import AddNewPlaceForm from './pages/AddNewPlaceForm.jsx'
 import SinglePlacePage from './pages/SinglePlacePage.jsx';
+import BookingPage from './pages/BookingPage.jsx'
+import BookingsPage from './pages/BookingsPage.jsx'
 
 
 axios.defaults.baseURL = 'http://localhost:4000'
@@ -32,6 +34,8 @@ function App() {
         <Route path='/account/places' element={<PlacesPage/>}></Route>
         <Route path='/account/places/new' element={<AddNewPlaceForm/>}></Route>
         <Route path='/account/places/:id' element={<AddNewPlaceForm/>}></Route>
+        <Route path='/account/bookings'element={<BookingsPage/>}></Route>
+        <Route path='/account/bookings/:id'element={<BookingPage/>}></Route>
         <Route path='/places/:id' element={<SinglePlacePage/>}></Route>
        
       </Route>
