@@ -1,5 +1,6 @@
 
 import './App.css'
+import { API_URL } from './secret.js'
 import LoginPage from './pages/LoginPage'
 import IndexPage from './pages/IndexPage'
 import {Routes,Route} from 'react-router-dom'
@@ -15,7 +16,7 @@ import BookingPage from './pages/BookingPage.jsx'
 import BookingsPage from './pages/BookingsPage.jsx'
 
 
-axios.defaults.baseURL = 'http://localhost:4000'
+axios.defaults.baseURL = API_URL
 axios.defaults.withCredentials = true;
 
 function App() {

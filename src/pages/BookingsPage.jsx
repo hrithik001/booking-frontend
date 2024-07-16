@@ -27,7 +27,7 @@ const BookingsPage = () => {
                         {
                           eachBooking.place.photos?.length > 0 && (
                          
-                            <img className="object-cover" src={`http://localhost:4000/uploads/${eachBooking.place.photos[0]}`} alt={eachBooking.place.photos[0]} />
+                            <img className="object-cover" src={`${API_URL}/uploads/${eachBooking.place.photos[0]}`} alt={eachBooking.place.photos[0]} />
                           )
                         }
                     </div>

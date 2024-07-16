@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from '../secret.js'
 
 const PlaceGallery = ({place}) => {
 
@@ -17,7 +18,7 @@ const PlaceGallery = ({place}) => {
                     {
                     place?.photos?.length > 0 && place.photos.map(photo => (
                         <div key={photo} >
-                            <img src={`http://localhost:4000/uploads/${photo}`} alt={photo} />
+                            <img src={`${API_URL}/uploads/${photo}`} alt={photo} />
                         </div>
                     ))
                 }
@@ -32,19 +33,19 @@ const PlaceGallery = ({place}) => {
                 <div className="bg-blue-200 h-full">
                     {place.photos?.[0] && (
                         <div className="w-full h-full">
-                            <img className="w-full h-full object-cover object-center" src={`http://localhost:4000/uploads/${place.photos[0]}`} alt={place.photos[0]} />
+                            <img className="w-full h-full object-cover object-center" src={`${API_URL}/uploads/${place.photos[0]}`} alt={place.photos[0]} />
                         </div>
                     )}
                 </div>
                 <div className="flex flex-col gap-2 h-full relative">
                     {place.photos?.[1] && (
                         <div className="w-full h-1/2">
-                            <img className="w-full h-full object-cover object-center" src={`http://localhost:4000/uploads/${place.photos[1]}`} alt={place.photos[1]} />
+                            <img className="w-full h-full object-cover object-center" src={`${API_URL}/uploads/${place.photos[1]}`} alt={place.photos[1]} />
                         </div>
                     )}
                     {place.photos?.[2] && (
                         <div className="w-full h-1/2 relative ">
-                            <img className="w-full h-full object-cover object-center" src={`http://localhost:4000/uploads/${place.photos[2]}`} alt={place.photos[2]} />
+                            <img className="w-full h-full object-cover object-center" src={`${API_URL}/uploads/${place.photos[2]}`} alt={place.photos[2]} />
                         
                         </div>
                     )}
