@@ -10,7 +10,7 @@ const IndexPage = () => {
 
         axios.get('/places').then(({data}) => {
             console.log(data);
-            setPlaces([...data,...data])
+            setPlaces([...data])
         });
 
 

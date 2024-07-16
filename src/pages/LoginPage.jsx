@@ -49,8 +49,7 @@ const Login = () => {
        }catch(e)
        {
         if (e.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
+           
             if (e.response.status === 404) {
                 console.log("User not found");
                 alert("User not found");
@@ -62,11 +61,11 @@ const Login = () => {
                 alert("Login failed due to server error");
             }
         } else if (e.request) {
-            // The request was made but no response was received
+           
             console.log("No response received");
             alert("No response received");
         } else {
-            // Something happened in setting up the request that triggered an Error
+            
             console.log("Error", e.message);
             alert("Login failed");
         }

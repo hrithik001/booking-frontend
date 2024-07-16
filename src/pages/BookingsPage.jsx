@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import AccountNav from '../components/AccountNav.jsx'
 import axios from 'axios'
 import { differenceInCalendarDays, differenceInDays, format } from 'date-fns';
-import { Link } from 'react-router-dom';
+import { Link ,Navigate} from 'react-router-dom';
 const BookingsPage = () => {
 
     const [bookings,setBookings] = useState([]);
@@ -14,17 +14,14 @@ const BookingsPage = () => {
         })
 
     },[])
-    if(bookings.length == 0)
-    {
-        return "";
-    }
+    
     return (
         <>
         <AccountNav />
         {
             <div className="mt-4">
                {
-                bookings.length > 0 && bookings.map((eachBooking,index) => (
+                bookings?.length > 0 ? (bookings.map((eachBooking,index) => (
                   <Link to={`/account/bookings/${eachBooking._id}`} className="flex bg-gray-100 p-4 rounded-2xl gap-4 cursor-pointer my-4" key={eachBooking._id}>
                     <div className="w-32 h-32 flex  bg-gray-300 grow-0 shrink-0">
                         {
@@ -74,7 +71,15 @@ const BookingsPage = () => {
                         </div>
                     </div>
                   </Link>
-                ))
+                ))) : (
+                  <div className='h-screen flex items-center justify-center'>
+                    <div className='h-2/4 w-2/4  text-center   gap-4'>
+                      <span className='font-semibold text-3xl'>Not booked yet !!</span> 
+                     <Link to={'/'} className='bg-primary p-2 rounded-full w-full text-white text-2xl ms-3 px-6'>Click here to book</Link>
+                    </div>
+                  </div>
+
+                )
                }
             </div>
         }

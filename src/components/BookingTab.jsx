@@ -64,6 +64,13 @@ const BookingTab = ({place}) => {
     };
 
     const BookPlace = async () => {
+        if (!user)
+        {
+            alert("Please login to book the place");
+            setNavigate('/login');
+            return ;
+            
+        }
         if(!validateBookingDetails) return alert('Enter all data');
         try {
             const response = await axios.post('places/book',
@@ -129,11 +136,11 @@ const BookingTab = ({place}) => {
                                     </div>
                                     <div className="border-t py-3 px-4">
                                         <label> Your address </label>
-                                        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Hrithik Roshan"/>
+                                        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="New Delhi"/>
                                     </div>
                                     <div className="border-t py-3 px-4">
                                         <label> Your phone number </label>
-                                        <input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} placeholder="Hrithik Roshan"/>
+                                        <input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} placeholder="+91 5683XXXXXX"/>
                                     </div>
                                 </div>
                             )

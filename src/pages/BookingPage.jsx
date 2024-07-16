@@ -22,6 +22,7 @@ const BookingPage = () => {
     }
     return (
        <>
+       
         <div className="grid items-center   h-screen">
             <div className="flex  h-4/5">
                 <div className="w-3/4">

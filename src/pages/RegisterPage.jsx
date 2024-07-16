@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 import axios from  'axios'
 
@@ -7,7 +7,7 @@ const RegisterPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({ name: '', email: '', password: '' });
-
+    const [redirect,setRedirect] = useState(null);
     const validateUserData = () => {
         let valid = true;
         let errors = { name: '', email: '', password: '' };
@@ -48,6 +48,7 @@ const RegisterPage = () => {
                     email:email,
                     password:password
                 });
+                setRedirect('/login');
                 console.log(response.data);
             } catch (error) {
                 console.error('There was an error registering the user:', error);
@@ -57,6 +58,11 @@ const RegisterPage = () => {
              console.log('User validation data Failed!!')
         }
     };
+
+    if(redirect)
+    {
+        return <Navigate to={redirect} />
+    }
 
     return (
         <div className="mt-4 grow flex items-center justify-center">
