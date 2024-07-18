@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {Link} from 'react-router-dom'
-import { API_URL } from "../secret";
+import { CLOUDINARY_URL } from "../secret";
 
 const IndexPage = () => {
 
@@ -26,7 +26,7 @@ const IndexPage = () => {
                             <Link to={`/places/${place._id}`}  key={index}>
                                 <div className="bg-gray-500 rounded-2xl flex">
                                    {place.photos?.[0] && 
-                                    <img className="object-cover rounded-2xl aspect-square" src={`${API_URL}/uploads/${place.photos[0]}`} alt={place.photos[0]} />
+                                    <img className="object-cover rounded-2xl aspect-square" src={`${CLOUDINARY_URL}/${place.photos[0]}`} alt={place.photos[0]} />
                                     }
                                 </div>
                                 <h2 className="truncate font-bold"> {place.title}</h2>

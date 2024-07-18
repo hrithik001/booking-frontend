@@ -3,6 +3,7 @@ import AccountNav from '../components/AccountNav.jsx'
 import axios from 'axios'
 import { differenceInCalendarDays, differenceInDays, format } from 'date-fns';
 import { Link ,Navigate} from 'react-router-dom';
+import { API_URL } from '../secret.js';
 const BookingsPage = () => {
 
     const [bookings,setBookings] = useState([]);

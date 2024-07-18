@@ -3,7 +3,7 @@ import { Link  } from "react-router-dom";
 import AccountNav from "../components/AccountNav";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { API_URL } from "../secret";
+import { CLOUDINARY_URL } from "../secret";
 
 const PlacesPage = () => {
 
@@ -34,7 +34,7 @@ const PlacesPage = () => {
                         {
                           place.photos?.length > 0 && (
                          
-                            <img className="object-cover" src={`${API_URL}/uploads/${place.photos[0]}`} alt={place.photos[0]} />
+                            <img className="object-cover" src={`${CLOUDINARY_URL}/${place.photos[0]}`} alt={place.photos[0]} />
                           )
                         }
                     </div>
