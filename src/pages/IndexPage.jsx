@@ -2,10 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import {Link} from 'react-router-dom'
 import { CLOUDINARY_URL } from "../secret";
+import Pagination from "../components/Pagination.jsx";
 
 const IndexPage = () => {
 
     const [places,setPlaces] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 12;
 
     useEffect(() => {
 
@@ -17,30 +20,45 @@ const IndexPage = () => {
 
     },[]);
 
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
 
+    const currentItems = places.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+
+  
     return (
-        // <>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 mt-8 gap-y-8 gap-x-6 rounded-2xl">
-                {
-                    places.length > 0 && (places.map((place,index) => (
-                            <Link to={`/places/${place._id}`}  key={index}>
-                                <div className="bg-gray-500 rounded-2xl flex">
-                                   {place.photos?.[0] && 
-                                    <img className="object-cover rounded-2xl aspect-square" src={`${CLOUDINARY_URL}/${place.photos[0]}`} alt={place.photos[0]} />
-                                    }
-                                </div>
-                                <h2 className="truncate font-bold"> {place.title}</h2>
-                                <h3 className="truncate">{place.address}</h3>
-                                <div className="font-bold mt-1">
-                                  &#8377;{  place.price} per night
-                                </div>
-                            </Link>
-                    )))
-                 }
-                 
-            </div>
-        
-            
+          <div className="flex flex-col min-h-screen">
+      <div className="flex-grow p-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-8 gap-x-6 rounded-2xl">
+          {currentItems.length > 0 &&
+            currentItems.map((place, index) => (
+              <Link to={`/places/${place._id}`} key={index}>
+                <div className="bg-gray-500 rounded-2xl flex">
+                  {place.photos?.[0] && (
+                    <img
+                      className="object-cover rounded-2xl aspect-square"
+                      src={`${CLOUDINARY_URL}/${place.photos[0]}`}
+                      alt={place.photos[0]}
+                    />
+                  )}
+                </div>
+                <h2 className="truncate font-bold">{place.title}</h2>
+                <h3 className="truncate">{place.address}</h3>
+                <div className="font-bold mt-1">
+                  &#8377;{place.price} per night
+                </div>
+              </Link>
+            ))}
+        </div>
+      </div>
+      <div className=" p-4 sticky bottom-0">
+        <Pagination items={places} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
+      </div>
+    </div>
     );
 }
 

@@ -3,7 +3,7 @@ import AccountNav from '../components/AccountNav.jsx'
 import axios from 'axios'
 import { differenceInCalendarDays, differenceInDays, format } from 'date-fns';
 import { Link ,Navigate} from 'react-router-dom';
-import { API_URL } from '../secret.js';
+import { CLOUDINARY_URL } from '../secret.js';
 const BookingsPage = () => {
 
     const [bookings,setBookings] = useState([]);
@@ -28,7 +28,7 @@ const BookingsPage = () => {
                         {
                           eachBooking.place.photos?.length > 0 && (
                          
-                            <img className="object-cover" src={`${API_URL}/uploads/${eachBooking.place.photos[0]}`} alt={eachBooking.place.photos[0]} />
+                            <img className="object-cover" src={`${CLOUDINARY_URL}/${eachBooking.place.photos[0]}`} alt={eachBooking.place.photos[0]} />
                           )
                         }
                     </div>
