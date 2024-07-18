@@ -1,4 +1,4 @@
-# Frontend Application for Your Project
+# Frontend Application for Booking
 
 Welcome to the frontend application for your project. This application provides a user interface for interacting with the backend service, allowing users to view places, make bookings, and manage their account.
 
