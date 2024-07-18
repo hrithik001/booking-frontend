@@ -6,6 +6,7 @@ import { UserContext } from "../context/UserContext";
 
 const BookingTab = ({place}) => {
 
+    axios.defaults.withCredentials = true;
 
 
 

@@ -1,6 +1,7 @@
 import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 import axios from  'axios'
+axios.defaults.withCredentials = true;
 
 const RegisterPage = () => {
     const [name, setName] = useState('');

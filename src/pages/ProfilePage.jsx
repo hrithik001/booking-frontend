@@ -3,6 +3,7 @@ import { UserContext } from "../context/UserContext";
 import {Navigate,useParams,Link} from 'react-router-dom'
 import axios from "axios";
 import AccountNav from "../components/AccountNav";
+axios.defaults.withCredentials = true;
 
 const ProfilePage = () => {
      const [redirect,setRedirect] = useState(null);

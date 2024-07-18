@@ -4,6 +4,7 @@ import AccountNav from "../components/AccountNav";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { CLOUDINARY_URL } from "../secret";
+axios.defaults.withCredentials = true;
 
 const PlacesPage = () => {
 

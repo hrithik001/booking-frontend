@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import IndexPage from "./IndexPage";
 import { UserContext } from "../context/UserContext";
+axios.defaults.withCredentials = true;
 
 
 const Login = () => {

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from 'axios'
 import BookingTab from "../components/BookingTab";
 import PlaceGallery from "../components/PlaceGallery";
+axios.defaults.withCredentials = true;
 
 
 const SinglePlacePage = () => {

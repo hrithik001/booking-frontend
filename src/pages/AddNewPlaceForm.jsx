@@ -6,6 +6,8 @@ import PhotoUploader from "../components/PhotoUploader";
 import axios from "axios";
 import AccountNav from "../components/AccountNav";
 
+axios.defaults.withCredentials = true;
+
 
 const AddNewPlaceForm = () => {
 

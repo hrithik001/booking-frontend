@@ -4,6 +4,7 @@ import axios from 'axios'
 import { differenceInCalendarDays, differenceInDays, format } from 'date-fns';
 import { Link ,Navigate} from 'react-router-dom';
 import { CLOUDINARY_URL } from '../secret.js';
+axios.defaults.withCredentials = true;
 const BookingsPage = () => {
 
     const [bookings,setBookings] = useState([]);

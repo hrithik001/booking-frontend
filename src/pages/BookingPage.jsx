@@ -1,11 +1,10 @@
 import { useParams } from "react-router-dom";
-import AccountNav from '../components/AccountNav.jsx'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PlaceGallery from "../components/PlaceGallery.jsx";
 import { differenceInCalendarDays } from "date-fns";
 import { format } from "date-fns";
-
+axios.defaults.withCredentials = true;
 const BookingPage = () => {
     const {id} = useParams();
     const [booking,setBooking] = useState(null);

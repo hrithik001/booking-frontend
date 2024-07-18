@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {Link} from 'react-router-dom'
 import { CLOUDINARY_URL } from "../secret";
 import Pagination from "../components/Pagination.jsx";
+axios.defaults.withCredentials = true;
 
 const IndexPage = () => {
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from 'axios'
 import { CLOUDINARY_URL } from '../secret.js'
+axios.defaults.withCredentials = true;
 const PhotoUploader = ({addedphotos,onChange}) => {
 
     const [photolink,setPhotolink] = useState('');
