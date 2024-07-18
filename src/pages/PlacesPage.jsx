@@ -13,7 +13,7 @@ const PlacesPage = () => {
         axios.get('/users/places').then(({data}) => {
           setPlaces(data);
         })
-    })  
+    },[])  
 
     return (
       <div>
